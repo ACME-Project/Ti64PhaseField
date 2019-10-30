@@ -1,34 +1,38 @@
+
+//------------------------Initialization of global variables/parameters-----------------------//
+
 double R = 8.314 ;
 double T = 1023 ;
 double T_orig = 1023;
-double cr = 10.0;
-double L_orig = 0.139 ;
-double G_normalize = R*T ; 
-double lold = 9.677*pow(10, -8) ;
-double lc = 9.677*pow(10,-8) ;
-double dx_nd = lold/lc ;
-double tc = 4.4 ; //seconds
-double dt_old = 0.44 ; //seconds
-double dt = dt_old/tc; 
-double Dalal = 0.0001 ; 
+double cr = 10.0;        //Cooling rate (K/s)
+double L_orig = 0.139 ;  //Phase field mobility
+double G_normalize = R*T ;  //Scaling factor for terms having J/mol units
+double lold = 9.677*pow(10, -8) ;  //Grid size (m)
+double lc = 9.677*pow(10,-8) ;    //Characteristic length scale, or capillary length
+double dx_nd = lold/lc ;          // Non-dimensional grid size
+double tc = 4.4 ;               //Characteristic time scale (s)
+double dt_old = 0.44 ; 			// Dimensional dt (s)
+double dt = dt_old/tc;        //Non-dimensional dt
+double Dalal = 0.0001 ;        // The next four lines are the components of the Onsager mobility matrix
 double Dalv = -0.00008 ;
 double Dvv = 0.0001 ;
 double Dval = -0.00008 ;
-double Vm = 0.00001;
-double w_norm = (R*T)/Vm ;
-double epsi_norm = (R*T*pow(lc,2))/Vm;
-int variants = 20 ;
-const int dim = 3;
+double Vm = 0.00001;         //Molar volume (m^3/mol)
+double w_norm = (R*T)/Vm ;       //Scaling factor for the double well height
+double epsi_norm = (R*T*pow(lc,2))/Vm;    //Scaling factor for the gradient energy coeffcient
+int variants = 20 ;          // Number of variants : input parameter needed for defining a mmsp-grid
+const int dim = 3;     //Spatial dimensions
 const int nx = 20;
 const int ny = 20;
 const int nz = 20;
-double W_prefac = 6.095 ;
-double W_Al = 1.0 ;  
+double W_prefac = 6.0 ;   //Overall scaling for the double well depth              
+double W_Al = 1.0 ;       //Relative magnitudes of double well depths for the three components
 double W_V =  1.0 ; 
 double W_Ti = 1.5 ;
-double scaling = 1/(2*3.14*3.14) ;
-int steps = 70000 ;  
+double scaling = 1/(2*3.14*3.14) ;        //Scaling factor, needed for Fourier Transformation integrals. 
+int steps = 70000 ;    //Number of simulation steps.
 
+//------------------------Definition of global containers/arrays-----------------------//
 
 const int node_total = nx*ny*nz ; 
 double G_Alpha[node_total], G_Beta[node_total], W[node_total] ; 
@@ -39,24 +43,30 @@ double G_Al_alpha, G_Ti_alpha, G_V_alpha, G_Al_beta, G_Ti_beta, G_V_beta ;
 double fs = nx/Lx;
 double k[nx], fk[nx] ;
 
+
+//-----------------------Controlling the number and type of output files----------------//
+
+// If a particular file is not needed, change the value to 0
 bool output_pfsq = 1 ;
 bool output_cal = 1 ;
 bool output_cv = 1 ;
 bool output_chemnuc = 1 ;
 bool output_strainintnuc = 1 ;
 
+//---------------------Definition of functions-------------------------//
 void thermo_auxillary_terms(MMSP::vector<store_type> gradient, MMSP::vector<store_type> gradientsq, double c_Al, double c_V) ;
 void customoutput(MMSP::grid<dim, store_type> grid, int t) ;
 void calculate_strains(MMSP::grid<dim, store_type> grid) ;
 double nodesum(MMSP::grid<dim, store_type> grid, MMSP::vector<int> s) ;
 
+
+//---------------------Definition of grids and grid variables-----------------------//
 MMSP::grid<dim, store_type> grid(variants, 0, nx, 0, ny, 0, nz) ;
 MMSP::grid<dim, store_type> gradsqcal_grid(variants, 0, nx, 0, ny, 0, nz) ;
 MMSP::grid<dim, store_type> gradsqcv_grid(variants, 0, nx, 0, ny, 0, nz) ;
 MMSP::grid<dim, store_type> gradxgrid(variants, 0, nx, 0, ny, 0, nz) ;
 MMSP::grid<dim, store_type> gradygrid(variants, 0, nx, 0, ny, 0, nz) ;
 MMSP::grid<dim, store_type> gradzgrid(variants, 0, nx, 0, ny, 0, nz) ;
-
 const double Lx = g1(grid,0) - g0(grid,0) ;
 const double Ly = g1(grid,1) - g0(grid,1) ;
 const double Lz = g1(grid,2) - g0(grid,2) ;
@@ -64,7 +74,7 @@ const double dx = MMSP::dx(grid, 0) ;
 const double dy = MMSP::dx(grid, 1) ;
 const double dz = MMSP::dx(grid, 2) ;
 
-
+//-------------------Definition of classes---------------------------------//
 class sfts
 {
 	
@@ -84,6 +94,8 @@ class sfts
 };
 
 
+//--------------Definition of variables from the array class as defined by the fftw module, needed for the FFT operations----------//
+
 #include "Array.h"
 #include "/home/arun/Documents/mmsp-arun/fftw++-2.05/fftw++.h"
 
@@ -94,7 +106,7 @@ using namespace fftwpp;
 
 size_t align=sizeof(Complex);
   
-
+					//Container arrays for the 12 phase fields to be used in a regular simulation timestep. 'fi' for the real space, and 'Fi' for the Fourier space. 
 array3<double> f1(nx,ny,nz,align);
 array3<Complex> F1(nx,ny,nz,align);
 array3<double> f2(nx,ny,nz,align);
@@ -120,6 +132,7 @@ array3<Complex> F11(nx,ny,nz,align);
 array3<double> f12(nx,ny,nz,align);
 array3<Complex> F12(nx,ny,nz,align);
 	
+					//Container arrays for the 12 phase fields to be used in a nucleation timestep. 'finuc' for the real space, and 'Finuc' for the Fourier space. 
 array3<double> f1nuc(nx,ny,nz,align);
 array3<Complex> F1nuc(nx,ny,nz,align);
 array3<double> f2nuc(nx,ny,nz,align);
@@ -131,6 +144,7 @@ array3<Complex> F4nuc(nx,ny,nz,align);
 array3<double> f5nuc(nx,ny,nz,align);
 array3<Complex> F5nuc(nx,ny,nz,align);
 
+					//Container arrays for the strain energy densities for each of the 12 variants. 'dfdstri' for the Fourier space, and 'dfdstr_reali' for the real space. 
 array3<Complex> dfdstr1(nx,ny,nz,align);
 array3<double> dfdstr_real1(nx,ny,nz,align);
 array3<Complex> dfdstr2(nx,ny,nz,align);
@@ -156,6 +170,7 @@ array3<double> dfdstr_real11(nx,ny,nz,align);
 array3<Complex> dfdstr12(nx,ny,nz,align);
 array3<double> dfdstr_real12(nx,ny,nz,align);
 	
+					//Container arrays for the elastic interaction energies for each of the 12 variants, to be used in a nucleation timestep. 'elinti' for the Fourier space, and 'elint_reali' for the real space. 
 array3<Complex> elint1(nx,ny,nz,align);
 array3<double> elint_real1(nx,ny,nz,align);
 array3<Complex> elint2(nx,ny,nz,align);
@@ -167,9 +182,11 @@ array3<double> elint_real4(nx,ny,nz,align);
 array3<Complex> elint5(nx,ny,nz,align);
 array3<double> elint_real5(nx,ny,nz,align);
 	
+					//Arrays to calculate and store total strain energy in the system as a function of the preexisting microstructure. 
 array3<Complex> TotStr(nx,ny,nz,align);
 array3<double> TotStr_real(nx,ny,nz,align);
 
+					
 rcfft3d Forward1(nx,ny,nz,f1,F1);
 rcfft3d Forward2(nx,ny,nz,f2,F2);
 rcfft3d Forward3(nx,ny,nz,f3,F3);
@@ -209,12 +226,18 @@ crfft3d Backward3n(nx,ny,nz,elint3,elint_real3);
 crfft3d Backward4n(nx,ny,nz,elint4,elint_real4);
 crfft3d Backward5n(nx,ny,nz,elint5,elint_real5);
 
+//----------Including the various modules-----------//
+
 
 #include "GradECoeff.hpp"
 #include "Eigenstrains.hpp"
 #include "thermo_modules.hpp"
 #include "strain_modules.hpp"
 #include "outputgeneration.hpp"
+
+
+
+//---------User defined functions--------------//
 
 double nodesum(MMSP::grid<dim, store_type> grid, MMSP::vector<int> s)
 {
