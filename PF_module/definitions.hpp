@@ -42,6 +42,7 @@ double dGAlpha_dAl,	dGBeta_dAl, dGAlpha_dV, dGBeta_dV, del_dGAlpha_dAl, del_dGBe
 double G_Al_alpha, G_Ti_alpha, G_V_alpha, G_Al_beta, G_Ti_beta, G_V_beta ; 
 double fs = nx/Lx;
 double k[nx], fk[nx] ;
+double epsi[12][3][3] ;
 
 
 //-----------------------Controlling the number and type of output files----------------//
@@ -74,7 +75,7 @@ const double dx = MMSP::dx(grid, 0) ;
 const double dy = MMSP::dx(grid, 1) ;
 const double dz = MMSP::dx(grid, 2) ;
 
-//-------------------Definition of classes---------------------------------//
+//-------------------Definition of user-defined classes---------------------------------//
 class sfts
 {
 	
@@ -92,6 +93,8 @@ class sfts
 		
 	}
 };
+
+sfts eigen_alpha[12];
 
 
 //--------------Definition of variables from the array class as defined by the fftw module, needed for the FFT operations----------//
@@ -229,8 +232,6 @@ crfft3d Backward5n(nx,ny,nz,elint5,elint_real5);
 //----------Including the various modules-----------//
 
 
-#include "GradECoeff.hpp"
-#include "Eigenstrains.hpp"
 #include "thermo_modules.hpp"
 #include "strain_modules.hpp"
 #include "outputgeneration.hpp"
@@ -257,6 +258,219 @@ double nodesum(MMSP::grid<dim, store_type> grid, MMSP::vector<int> s)
 }
 
 
+
+void initialize_epsi()
+{
+	
+epsi[0][0][0] = 0.0806 ;
+epsi[0][0][1] = 0.0301 ;
+epsi[0][0][2] = -0.0642 ;
+epsi[0][1][0] = 0.0301 ;
+epsi[0][1][1] = 0.0806 ;
+epsi[0][1][2] = -0.0277 ;
+epsi[0][2][0] = -0.0642 ;
+epsi[0][2][1] = -0.0277 ;
+epsi[0][2][2] = 0.3834 ;
+
+epsi[1][0][0] = 0.3445 ;
+epsi[1][0][1] = -0.1183 ;
+epsi[1][0][2] = -0.0486 ;
+epsi[1][1][0] = -0.1183 ;
+epsi[1][1][1] = 0.1056 ;
+epsi[1][1][2] = 0.0011 ;
+epsi[1][2][0] = -0.0486 ;
+epsi[1][2][1] = 0.0011 ;
+epsi[1][2][2] = 0.0999 ;
+
+epsi[2][0][0] = 0.0895 ;
+epsi[2][0][1] = -0.0300 ;
+epsi[2][0][2] = -0.0635 ;
+epsi[2][1][0] = -0.0300 ;
+epsi[2][1][1] = 0.0759 ;
+epsi[2][1][2] = 0.0214 ;
+epsi[2][2][0] = -0.0635 ;
+epsi[2][2][1] = 0.0214 ;
+epsi[2][2][2] = 0.3847 ;
+
+epsi[3][0][0] = 0.0895 ;
+epsi[3][0][1] = 0.0300 ;
+epsi[3][0][2] = -0.0635 ;
+epsi[3][1][0] = 0.0300 ;
+epsi[3][1][1] = 0.0759 ;
+epsi[3][1][2] = -0.0214 ;
+epsi[3][2][0] = -0.0635 ;
+epsi[3][2][1] = -0.0214 ;
+epsi[3][2][2] = 0.3847 ;
+
+epsi[4][0][0] = 0.0989 ;
+epsi[4][0][1] = -0.0021 ;
+epsi[4][0][2] = -0.0226 ;
+epsi[4][1][0] = -0.0021 ;
+epsi[4][1][1] = 0.1575 ;
+epsi[4][1][2] = 0.1592 ;
+epsi[4][2][0] = -0.0227 ;
+epsi[4][2][1] = 0.1592 ;
+epsi[4][2][2] = 0.2936 ;
+
+epsi[5][0][0] = 0.0806 ;
+epsi[5][0][1] = -0.0301 ;
+epsi[5][0][2] = -0.0642 ;
+epsi[5][1][0] = -0.0301 ;
+epsi[5][1][1] = 0.0860 ;
+epsi[5][1][2] = 0.0277 ;
+epsi[5][2][0] = -0.0642 ;
+epsi[5][2][1] = 0.0277 ;
+epsi[5][2][2] = 0.3834 ;
+
+epsi[6][0][0] = 0.3240 ;
+epsi[6][0][1] = -0.1376 ;
+epsi[6][0][2] = -0.0411 ;
+epsi[6][1][0] = -0.1376 ;
+epsi[6][1][1] = 0.1322 ;
+epsi[6][1][2] = -0.0016 ;
+epsi[6][2][0] = -0.0411 ;
+epsi[6][2][1] = -0.0016 ;
+epsi[6][2][2] = 0.0938 ;
+
+epsi[7][0][0] = 0.0938 ;
+epsi[7][0][1] = 0.0016 ;
+epsi[7][0][2] = -0.0411 ;
+epsi[7][1][0] = 0.0016 ;
+epsi[7][1][1] = 0.1322 ;
+epsi[7][1][2] = 0.1376 ;
+epsi[7][2][0] = -0.0411 ;
+epsi[7][2][1] = 0.1376 ;
+epsi[7][2][2] = 0.3240 ;
+
+epsi[8][0][0] = 0.0758 ;
+epsi[8][0][1] = -0.0259 ;
+epsi[8][0][2] = -0.0278 ;
+epsi[8][1][0] = -0.0259 ;
+epsi[8][1][1] = 0.0771 ;
+epsi[8][1][2] = 0.0101 ;
+epsi[8][2][0] = -0.0278 ;
+epsi[8][2][1] = 0.0101 ;
+epsi[8][2][2] = 0.3971 ;
+
+epsi[9][0][0] = 0.3456 ;
+epsi[9][0][1] = -0.1251 ;
+epsi[9][0][2] = -0.0102 ;
+epsi[9][1][0] = -0.1251 ;
+epsi[9][1][1] = 0.1123 ;
+epsi[9][1][2] = -0.0155 ;
+epsi[9][2][0] = -0.0102 ;
+epsi[9][2][1] = -0.0155 ;
+epsi[9][2][2] = 0.0121 ;
+
+epsi[10][0][0] = 0.0758 ;
+epsi[10][0][1] = 0.0259 ;
+epsi[10][0][2] = -0.0278 ;
+epsi[10][1][0] = 0.0259 ;
+epsi[10][1][1] = 0.0771 ;
+epsi[10][1][2] = -0.0101 ;
+epsi[10][2][0] = -0.0278 ;
+epsi[10][2][1] = -0.0101 ;
+epsi[10][2][2] = 0.3971 ;
+
+epsi[11][0][0] = 0.0863 ;
+epsi[11][0][1] = 0.0177 ;
+epsi[11][0][2] = -0.0254 ;
+epsi[11][1][0] = 0.0177 ;
+epsi[11][1][1] = 0.0819 ;
+epsi[11][1][2] = 0.0729 ;
+epsi[11][2][0] = -0.0254 ;
+epsi[11][2][1] = 0.0729 ;
+epsi[11][2][2] = 0.3818 ;
+
+}
+
+
+void initialize_alpha_eigen()
+{
+
+eigen_alpha[0].e[0] = -0.083  ;
+eigen_alpha[0].e[5] = 0.0095  ;
+eigen_alpha[0].e[4] = 0.0  ;
+eigen_alpha[0].e[1] = 0.123  ;
+eigen_alpha[0].e[3] = 0.0  ;
+eigen_alpha[0].e[2] = 0.035  ;
+
+eigen_alpha[1].e[0] = -0.083  ;
+eigen_alpha[1].e[5] = 0.0  ;
+eigen_alpha[1].e[4] = 0.0095  ;
+eigen_alpha[1].e[1] = 0.035  ;
+eigen_alpha[1].e[3] = 0.0  ;
+eigen_alpha[1].e[2] = 0.123  ;
+
+eigen_alpha[2].e[0] = 0.079  ;
+eigen_alpha[2].e[5] = -0.0359  ;
+eigen_alpha[2].e[4] = -0.0264  ;
+eigen_alpha[2].e[1] = 0.0047  ;
+eigen_alpha[2].e[3] = 0.0810  ;
+eigen_alpha[2].e[2] = -0.0087  ;
+
+eigen_alpha[3].e[0] = -0.079  ;
+eigen_alpha[3].e[5] = 0.0359  ;
+eigen_alpha[3].e[4] = 0.0264  ;
+eigen_alpha[3].e[1] = 0.0047  ;
+eigen_alpha[3].e[3] = 0.0810  ;
+eigen_alpha[3].e[2] = -0.0087  ;
+
+eigen_alpha[4].e[0] = 0.079  ;
+eigen_alpha[4].e[5] = -0.0359  ;
+eigen_alpha[4].e[4] = 0.0264  ;
+eigen_alpha[4].e[1] = 0.0047  ;
+eigen_alpha[4].e[3] = -0.0810  ;
+eigen_alpha[4].e[2] = -0.0087  ;
+
+eigen_alpha[5].e[0] = 0.079  ;
+eigen_alpha[5].e[5] = 0.0359  ;
+eigen_alpha[5].e[4] = -0.0264  ;
+eigen_alpha[5].e[1] = 0.0047  ;
+eigen_alpha[5].e[3] = -0.0810  ;
+eigen_alpha[5].e[2] = -0.0087  ;
+
+eigen_alpha[6].e[0] = -0.083  ;
+eigen_alpha[6].e[5] = -0.0095  ;
+eigen_alpha[6].e[4] = 0.0  ;
+eigen_alpha[6].e[1] = 0.123  ;
+eigen_alpha[6].e[3] = 0.0  ;
+eigen_alpha[6].e[2] = 0.035  ;
+
+eigen_alpha[7].e[0] = -0.083  ;
+eigen_alpha[7].e[5] = 0.0  ;
+eigen_alpha[7].e[4] = -0.0095  ;
+eigen_alpha[7].e[1] = 0.035  ;
+eigen_alpha[7].e[3] = 0.0  ;
+eigen_alpha[7].e[2] = 0.123  ;
+
+eigen_alpha[8].e[0] = 0.079  ;
+eigen_alpha[8].e[5] = -0.0264  ;
+eigen_alpha[8].e[4] = -0.0359  ;
+eigen_alpha[8].e[1] = -0.0087  ;
+eigen_alpha[8].e[3] = 0.0810  ;
+eigen_alpha[8].e[2] = 0.0047  ;
+
+eigen_alpha[9].e[0] = 0.079  ;
+eigen_alpha[9].e[5] = 0.0264  ;
+eigen_alpha[9].e[4] = 0.0359  ;
+eigen_alpha[9].e[1] = -0.0087  ;
+eigen_alpha[9].e[3] = 0.0810  ;
+eigen_alpha[9].e[2] = 0.0047  ;
+
+eigen_alpha[10].e[0] = 0.079  ;
+eigen_alpha[10].e[5] = -0.0264  ;
+eigen_alpha[10].e[4] = 0.0359  ;
+eigen_alpha[10].e[1] = -0.0087  ;
+eigen_alpha[10].e[3] = -0.0810  ;
+eigen_alpha[10].e[2] = 0.0047  ;
+
+eigen_alpha[11].e[0] = 0.079  ; 
+eigen_alpha[11].e[5] = 0.0264  ; 
+eigen_alpha[11].e[4] = -0.0359  ; 
+eigen_alpha[11].e[1] = -0.0087  ;
+eigen_alpha[11].e[3] = -0.0810  ; 
+eigen_alpha[11].e[2] = 0.0047  ; }
 
 
 
