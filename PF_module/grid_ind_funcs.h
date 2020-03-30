@@ -1,0 +1,25 @@
+double gdiff(double cal, double cv, double T) ;
+double q_alpha_al(double cal, double cv, double T);
+double q_alpha_v(double cal, double cv, double T);
+double q_beta_al(double cal, double cv, double T) ;
+double q_beta_v(double cal, double cv, double T) ;
+double Malal_alpha(double cal, double cv, double T) ;
+double Malal_beta(double cal, double cv, double T) ;
+double Mvv_alpha(double cal, double cv, double T) ;
+double Mvv_beta(double cal, double cv, double T) ;
+double d_Malal_alpha_dcal(double cal, double cv, double T)  ;
+double d_Malal_alpha_dcv(double cal, double cv, double T)  ;
+double d_Malal_beta_dcal(double cal, double cv, double T) ;
+double d_Malal_beta_dcv(double cal, double cv, double T)  ;
+double d_Mvv_alpha_dcal(double cal, double cv, double T)  ;
+double d_Mvv_alpha_dcv(double cal, double cv, double T)  ;
+double d_Mvv_beta_dcal(double cal, double cv, double T)  ;
+double d_Mvv_beta_dcv(double cal, double cv, double T)  ;
+void initialize_epsi();
+void initialize_alpha_eigen();
+double omega_inv_ij(double* cnew, double* k ,  double modk) ;
+void define_c_sigma() ;
+double Bpq(double k1, double k2, double k3, double modk, int p, int q) ;
+double B(double k1, double k2, double k3, double modk, int variant) ;
+void update_T_dependent_vars(double T) ;
+
