@@ -11,7 +11,7 @@
 #include<string>
 #include <time.h>
 #include<deque>
-#include<mpi.h>
+//#include<mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include<vector>
@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
 
     for(int t = 0 ; t<steps ; t++)
 	{	
-		if(cr > 0.0)    //Implementing the variation of Temperature based on the given cooling rate
+		if(cr > 0.0 and (T>700))    //Implementing the variation of Temperature based on the given cooling rate
 		{ 
             T= T- dt*cr ; 
             G_Al_alpha = (Al_alpha_a_3 + Al_alpha_b_3*T+ Al_alpha_c_3*T*log(T) + Al_alpha_d_3*T*T) ;
@@ -141,17 +141,16 @@ int main(int argc, char* argv[])
 	
             G_V_alpha = (V_alpha_a_2 + V_alpha_b_2*T+ V_alpha_c_2*T*log(T) + V_alpha_d_2*T*T) ; //(21.96 - T/50)
             G_V_beta = (V_beta_a_2 + V_beta_b_2*T+ V_beta_c_2*T*log(T) + V_beta_d_2*T*T) ;	
-            //L = exp(a - b/T) ;
             w_norm = (R*T)/Vm ;       //Scaling factor for the well height
             epsi_norm = (R*T*pow(lc,2))/Vm;    //Scaling factor for the gradient energy coeffcient
             epsi_prefac = 9.0e-07/epsi_norm ;
-            W_prefac = 7.2e+06/w_norm ;   //Overall scaling for the well depth    
-            D = 1.0e-12 ; //2.4e-05*exp(-18040/T) ;          
-            L_norm = (D*Vm)/(R*T*lc*lc) ;
-            L_orig = v_alpha*T_trans/(6*(T_trans - T)*heat*5e-07) ;
-            L = L_orig/L_norm;
-            //cout<<L<<endl;     
-        
+            W_prefac = 7.2e+05/w_norm ;   //Overall scaling for the well depth  
+            Dnorm = 2.4e-5*exp(-18040.0/T) ; //0.001 ;        // The next two lines are the components of the Onsager mobility matrix
+            Dalal = 2.4e-5*exp(-18040.0/T)/(5*Dnorm) ;   
+            Dvv = (1.0e-5*exp(-17460.0/T))/(5*Dnorm) ;   
+            L_norm = (Dnorm*Vm)/(R*T*lc*lc) ;
+            L_orig = fp/(T_trans-T) ; //v_alpha*T_trans/((T_trans - T)*heat*5e-07) ;
+            L = L_orig/L_norm; //exp(a-b/T) ; //  
         }
         
         for(int n = 0 ; n < nodes(grid) ; n++)
@@ -218,7 +217,7 @@ int main(int argc, char* argv[])
             set(gradsqcv_grid(n),3) = gradientsqtemp[2][20] ;
 		}
         
-        if(t%100==0 & t <=200)
+        if(t%100==0 & t <=200)  //Boundary nucleation
         {
            double deltag = 0.0001 ;
            double kappa1 = 0.01 ; 
@@ -252,7 +251,7 @@ int main(int argc, char* argv[])
                     if(x[0]==1 || x[0]==nx-2) nuc_index = 2 ; //(int)(rand()%2) + 1 ;
                     else if(x[1]==1 || x[1]==ny-2) nuc_index = 1 ; 
                     cout<<"Nucleating index: "<<nuc_index<<" at position "<<x[0]<<" "<<x[1]<<endl;
-                    variant_ids.push_back(nuc_index);
+                    //variant_ids.push_back(nuc_index);
                     set(grid(n), nuc_index) = 1.0; 
                     set(grid(n), 15) = 1.0 ;
                 }
@@ -292,7 +291,7 @@ int main(int argc, char* argv[])
                     int nuc_index ;
                     nuc_index = (int)intenergies(n)[13] ; 
                     cout<<"Nucleating index: "<<nuc_index<<" at position "<<x[0]<<" "<<x[1]<<" "<<x[2]<<endl;
-                    variant_ids.push_back(nuc_index);
+                    //variant_ids.push_back(nuc_index);
                     set(grid(n), nuc_index) = 1.0; 
                 }
             }
@@ -310,17 +309,7 @@ int main(int argc, char* argv[])
 			delete [] temp_array;
 		}
         
-        if(t%500==0)   
-		{
-            string file_name = "variants_dist_" + to_string(t) + ".txt" ;
-            ofstream myfile;
-            myfile.open(file_name.c_str());
-            for(int i = 0 ; i < variant_ids.size() ; i++)
-            {
-                myfile<<variant_ids[i]<<endl;
-            }
-            myfile.close();
-        }
+        
         
             
         

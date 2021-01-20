@@ -4,36 +4,38 @@
 double M0 = 5.0e-21;
 double R = 8.314 ;
 double T = 1200.0 ;
-double cr = 0.1;   //Cooling Rate     
+double cr = 0.5;     
+double V0 = 1.0e-02/60.0 ;
+double epsi_sq = 1.0e-07 ; 
 double G_normalize = R*T ;  //Scaling factor for terms having J/mol units
-double lc = 1e-07 ;     //C
-double dt = 0.02 ;        //Non-dimensional dt
+double lc = 1e-07 ;
+//double dt_old = 0.44 ; 			// Dimensional dt (s)
+double dt = 3e-03 ; //dt_old/tc;        //Non-dimensional dt  
 double Vm = 0.00001;         //Molar volume (m^3/mol)
 double w_norm = (R*T)/Vm ;       //Scaling factor for the double well height
 double epsi_norm = (R*T*pow(lc,2))/Vm;    //Scaling factor for the gradient energy coeffcient
 double epsi_prefac = 9.0e-07/epsi_norm ;
-double D = 1.0e-12; //2.4e-05*exp(-18040/T) ;
-double W_prefac = 7.2e+06/w_norm ;   //Overall scaling for the double well depth              
-double L_norm = (D*Vm)/(R*T*lc*lc) ;
-double v_alpha = 3.34e-07 ;  //Calculated velocity of alpha lamellae - Ballpark 
-double heat = 4.17e+8 ;  //Latent heat of transformation from beta to alpha 
-double T_trans = 1268.0 ; //Beta-transus temperature 
-double L_orig = v_alpha*T_trans/((T_trans - T)*heat*5e-07) ;
-double L = L_orig/L_norm;   //Scaled phase-field mobility for alpha
+double W_prefac = 7.2e+03/w_norm ;   //Overall scaling for the double well depth              
 int variants = 20 ;          // Number of variants : input parameter needed for defining a mmsp-grid
-std::vector<int> variant_ids ;  //Container to store the variant-ids
-const int dim = 3;     //Spatial dimensions
-double Dalal = 2.02e-04 ;        // The next four lines are the components of the Onsager mobility matrix
-double Dvv = 2.02e-04 ;  
-const int nx = 48;
-const int ny = 48;
-const int nz = 48;
-double W_Al = 1.0 ;       //Relative magnitudes of double well depths for the three components
+const int dim = 2;     //Spatial dimensions
+double Dnorm = 2.4e-5*exp(-18040.0/T) ;
+double Dalal = 2.4e-5*exp(-18040.0/T)/Dnorm ; //0.001 ;        // The next four lines are the components of the Onsager mobility matrix
+double Dvv = 1.0e-5*exp(-17460.0/T)/Dnorm ; //0.001 ;
+double L_norm = (Dnorm*Vm)/(R*T*lc*lc) ;
+double T_trans = 1268.0 ;
+double fp = 2.0e-03 ; 
+double L_orig = fp/(T_trans-T) ; 
+double L = L_orig/L_norm; 
+const int nx = 50;
+const int ny = 50;    
+const int nz = 50;        
+double W_Al = 0.5 ;       //Relative magnitudes of double well depths for the three components
 double W_V =  1.0 ; 
 double W_Ti = 1.0 ;
-long steps = 5e+8 ;    //Number of simulation steps.
+int steps = 500000 ;    //Number of simulation steps.
 
-double kappa_c = 0.1 ; //1.76 ;
+double kappa_c = 1.0 ;
+
 
 //------------------------Definition of global containers/arrays-----------------------//
 
