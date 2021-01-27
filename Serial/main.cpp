@@ -230,7 +230,6 @@ int main(int argc, char* argv[])
         // Calculating the squared gradients for the composition fields.
         for(int n = 0 ; n<nodes(grid) ; n++)
         {
-<<<<<<< HEAD
     			MMSP::vector<int> x = position(grid, n);
     			MMSP::vector<store_type> gradientsqtemp = gradsq(grid, x) ;
     			double temp1 = 0.0 ;
@@ -245,33 +244,16 @@ int main(int argc, char* argv[])
         }
 
         // Nucleation fields.
+        // Where does the 200 come from?  This is a nucleation choice - there are options
+        // where all the nuclei are available at the start of the simulation.  This choice
+        // is in line with the size of the domain over which the computation is performed.
         if(t%100==0 & t <=200)  //Boundary nucleation
         {
-           double deltag = 0.0001 ;
            double kappa1 = 0.01 ;
-           double kappa2 = 0.001 ;
-
-=======
-			MMSP::vector<int> x = position(grid, n); 
-			MMSP::vector<store_type> gradientsqtemp = gradsq(grid, x) ;
-			double temp1 = 0.0 ;
-			double temp2 = 0.0 ;
-            set(gradsqcal_grid(n),1) = gradientsqtemp[0][20] ;
-            set(gradsqcal_grid(n),2) = gradientsqtemp[1][20] ;
-            set(gradsqcal_grid(n),3) = gradientsqtemp[2][20] ;
-            
-			set(gradsqcv_grid(n),1) = gradientsqtemp[0][21] ;
-            set(gradsqcv_grid(n),2) = gradientsqtemp[1][21] ;		
-            set(gradsqcv_grid(n),3) = gradientsqtemp[2][21] ;
-		}
-        
-        if(t%100==0 & t <=200)  //Boundary nucleation
-        {
-           double kappa1 = 0.01 ; 
            double kappa2 = (16*3.14*(pow(0.02,3)))/(3*1.38e-23*T) ;
            double stheta = 0.5 ;
-            
->>>>>>> 89ecd705b324fe9fced60f1db6a574abc65df7ed
+
+
             for(int n = 0 ; n < nodes(grid) ; n++)
             {
                 MMSP::vector<int> x = position(grid, n);
@@ -288,15 +270,9 @@ int main(int argc, char* argv[])
                     }
                 }
                 if(phi_sum > 0.1) continue ;
-<<<<<<< HEAD
                 double prob1 ;
-                double df = gdiff(grid(n)[20], grid(n)[21], T) ;
-                double jstar = kappa1*exp(-kappa2*deltag) ;
-=======
-                double prob1 ; 
-                double df = (gdiff(grid(n)[20], grid(n)[21], T)*8.314*T)/1.0e-5 + intenergies(n)[min_index];  
+                double df = (gdiff(grid(n)[20], grid(n)[21], T)*8.314*T)/1.0e-5 + intenergies(n)[min_index];
                 double jstar = kappa1*stheta*exp(-kappa2/(pow(df,2))) ;
->>>>>>> 89ecd705b324fe9fced60f1db6a574abc65df7ed
                 double prob = 1 - exp(-jstar) ;
                 double random_no = (double)(rand() % 1000) ;
                 double decision_var = random_no/1000.0 ;
@@ -346,12 +322,7 @@ int main(int argc, char* argv[])
                     int nuc_index ;
                     nuc_index = (int)intenergies(n)[13] ;
                     cout<<"Nucleating index: "<<nuc_index<<" at position "<<x[0]<<" "<<x[1]<<" "<<x[2]<<endl;
-<<<<<<< HEAD
-                    //variant_ids.push_back(nuc_index);
                     set(grid(n), nuc_index) = 1.0;
-=======
-                    set(grid(n), nuc_index) = 1.0; 
->>>>>>> 89ecd705b324fe9fced60f1db6a574abc65df7ed
                 }
             }
         }
