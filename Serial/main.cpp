@@ -145,9 +145,9 @@ int main(int argc, char* argv[])
 
 	}
 
-    srand(time(NULL));
+  srand(time(NULL));
 
-    for(int t = 0 ; t<steps ; t++)
+  for(int t = 0 ; t<steps ; t++)
 	{
     // The temperature dependent variables are updated here.  So if you are cooling - "cr > 0.0" then execute
     // this block and update the variables accordingly.
@@ -247,7 +247,11 @@ int main(int argc, char* argv[])
         // Where does the 200 come from?  This is a nucleation choice - there are options
         // where all the nuclei are available at the start of the simulation.  This choice
         // is in line with the size of the domain over which the computation is performed.
-        if(t%100==0 & t <=200)  //Boundary nucleation
+        //
+        // assumption made from the combination of analytically calculated rate and the choice
+        // of simulation domain size.  If the size of the domain is increased, then you will
+        // need to recalculate the number of
+        if(t%100==0 & t <=200)  //Checking for nucleation at all boundary sites.
         {
            double kappa1 = 0.01 ;
            double kappa2 = (16*3.14*(pow(0.02,3)))/(3*1.38e-23*T) ;
@@ -290,6 +294,7 @@ int main(int argc, char* argv[])
         }
 
 
+        // Checking for nucleation at every interior point.
         if(t%100==0 & t >= 200)  //In-grain nucleation
         {
            double kappa1 = 0.01 ;
@@ -312,6 +317,8 @@ int main(int argc, char* argv[])
                 }
                 if(phi_sum > 0.1) continue ;
                 int min_index = (int)intenergies(n)[13] ;
+                // "intenergies" captures the energy of the preferred variant.  All energies are examined
+                // and the one with the lowest strain energy is used.
                 double df = (gdiff(grid(n)[20], grid(n)[21], T)*8.314*T)/1.0e-5 + intenergies(n)[min_index];
                 double jstar = kappa1*exp(-kappa2/(pow(df,2))) ;
                 double prob = 1 - exp(-jstar) ;
@@ -329,38 +336,35 @@ int main(int argc, char* argv[])
 
 
 
-
+        // MMSP output generation subroutine.
         if(t%500==0)
-		{
-			std::string file_name = "output_" + to_string(t) + ".dat" ;
-			char* temp_array = new char[100 + 1];
-			strcpy(temp_array, file_name.c_str()) ; ;
-			MMSP::output(grid, temp_array);
-			delete [] temp_array;
-		}
+    		{
+    			std::string file_name = "output_" + to_string(t) + ".dat" ;
+    			char* temp_array = new char[100 + 1];
+    			strcpy(temp_array, file_name.c_str()) ; ;
+    			MMSP::output(grid, temp_array);
+    			delete [] temp_array;
+    		}
 
-
-
-
-
+    // Main loop for calcuation.
 		for(int n = 0 ; n < nodes(grid) ; n++)
 		{
 			MMSP::vector<int> x = position(grid, n);
 
-            double strain_energy[13];
-			strain_energy[0] = 0.0 ;
-			strain_energy[1] = (double)(1.0/(nx*ny))*(dfdstr_real1[x[0]][x[1]][x[2]]) ;
-            strain_energy[2] = (double)(1.0/(nx*ny))*(dfdstr_real2[x[0]][x[1]][x[2]]) ;
-            strain_energy[3] = (double)(1.0/(nx*ny))*(dfdstr_real3[x[0]][x[1]][x[2]]) ;
-            strain_energy[4] = (double)(1.0/(nx*ny))*(dfdstr_real4[x[0]][x[1]][x[2]]) ;
-            strain_energy[5] = (double)(1.0/(nx*ny))*(dfdstr_real5[x[0]][x[1]][x[2]]) ;
-            strain_energy[6] = (double)(1.0/(nx*ny))*(dfdstr_real6[x[0]][x[1]][x[2]]) ;
-            strain_energy[7] = (double)(1.0/(nx*ny))*(dfdstr_real7[x[0]][x[1]][x[2]]) ;
-            strain_energy[8] = (double)(1.0/(nx*ny))*(dfdstr_real8[x[0]][x[1]][x[2]]) ;
-            strain_energy[9] = (double)(1.0/(nx*ny))*(dfdstr_real9[x[0]][x[1]][x[2]]) ;
-            strain_energy[10] = (double)(1.0/(nx*ny))*(dfdstr_real10[x[0]][x[1]][x[2]]) ;
-            strain_energy[11] = (double)(1.0/(nx*ny))*(dfdstr_real11[x[0]][x[1]][x[2]]) ;
-            strain_energy[12] = (double)(1.0/(nx*ny))*(dfdstr_real12[x[0]][x[1]][x[2]]) ;
+      double strain_energy[13];
+  		strain_energy[0] = 0.0 ;
+  		strain_energy[1] = (double)(1.0/(nx*ny))*(dfdstr_real1[x[0]][x[1]][x[2]]) ;
+      strain_energy[2] = (double)(1.0/(nx*ny))*(dfdstr_real2[x[0]][x[1]][x[2]]) ;
+      strain_energy[3] = (double)(1.0/(nx*ny))*(dfdstr_real3[x[0]][x[1]][x[2]]) ;
+      strain_energy[4] = (double)(1.0/(nx*ny))*(dfdstr_real4[x[0]][x[1]][x[2]]) ;
+      strain_energy[5] = (double)(1.0/(nx*ny))*(dfdstr_real5[x[0]][x[1]][x[2]]) ;
+      strain_energy[6] = (double)(1.0/(nx*ny))*(dfdstr_real6[x[0]][x[1]][x[2]]) ;
+      strain_energy[7] = (double)(1.0/(nx*ny))*(dfdstr_real7[x[0]][x[1]][x[2]]) ;
+      strain_energy[8] = (double)(1.0/(nx*ny))*(dfdstr_real8[x[0]][x[1]][x[2]]) ;
+      strain_energy[9] = (double)(1.0/(nx*ny))*(dfdstr_real9[x[0]][x[1]][x[2]]) ;
+      strain_energy[10] = (double)(1.0/(nx*ny))*(dfdstr_real10[x[0]][x[1]][x[2]]) ;
+      strain_energy[11] = (double)(1.0/(nx*ny))*(dfdstr_real11[x[0]][x[1]][x[2]]) ;
+      strain_energy[12] = (double)(1.0/(nx*ny))*(dfdstr_real12[x[0]][x[1]][x[2]]) ;
 
 			G_Alpha[n] = ((grid(n)[20]*G_Al_alpha + grid(n)[21]*G_V_alpha + (1-grid(n)[20]-grid(n)[21])*G_Ti_alpha +
 					 R*T*(grid(n)[20]*log(grid(n)[20]) + grid(n)[21]*log(grid(n)[21]) + (1-grid(n)[20]-grid(n)[21])*log((1-grid(n)[20]-grid(n)[21]))) +
@@ -371,21 +375,28 @@ int main(int argc, char* argv[])
 					 grid(n)[20]*grid(n)[21]*L0_BCC_Al_V + grid(n)[20]*(1-grid(n)[20]-grid(n)[21])*L0_BCC_Al_Ti + grid(n)[21]*(1-grid(n)[20]-grid(n)[21])*L0_BCC_Ti_V +
 					 grid(n)[20]*grid(n)[21]*(1-grid(n)[20]-grid(n)[21])*L0_BCC_Al_Ti_V)/G_normalize ;
 
-            W[n] = W_prefac*((0.10-grid(n)[20])*50*W_Al + (grid(n)[21]-0.036)*50*W_V) ;
+      W[n] = W_prefac*((0.10-grid(n)[20])*50*W_Al + (grid(n)[21]-0.036)*50*W_V) ;
+
 			MMSP::vector<store_type> gradient = grad(grid, x) ;
 			MMSP::vector<store_type> gradientsq = gradsq(grid, x) ;
 
+      // Big function that calculates in the thermo_modules.hpp.
 			thermo_auxillary_terms(gradient, gradientsq, grid(n)[20], grid(n)[21]) ;
 
 			MMSP::vector<store_type> gradcalp4 = gradsq(gradsqcal_grid, x) ;
 			MMSP::vector<store_type> gradcvp4 = gradsq(gradsqcv_grid, x) ;
 
-            double gradp4_cal = gradcalp4[0][1] + gradcalp4[1][2] + gradcalp4[2][3]  ;
-            double gradp4_cv  = gradcvp4[0][1] + gradcvp4[1][2] + gradcvp4[2][3] ;
+      // 4th order gradient.  Look up ^^^^.
+      double gradp4_cal = gradcalp4[0][1] + gradcalp4[1][2] + gradcalp4[2][3]  ;
+      double gradp4_cv  = gradcvp4[0][1] + gradcvp4[1][2] + gradcvp4[2][3] ;
 
-            double hphi[12], hphiprime[12], hphidoubleprime[12];
-            double gphi[12], gphiprime[12], gphidoubleprime[12];
+      // 1D arrays that store the h and g that is mapped from a particular value of
+      // an order parameter.  One each for h, h', h'' (derivatives with respect to
+      // the order parameter, etc.
+      double hphi[12], hphiprime[12], hphidoubleprime[12];
+      double gphi[12], gphiprime[12], gphidoubleprime[12];
 
+      // Actual calculations for these ^^^^ quantities.
 			for(int h = 0 ; h < length(grid(x)) ; h++)
 			{
 				int hindex = MMSP::index(grid(x),h) ;
@@ -431,7 +442,7 @@ int main(int argc, char* argv[])
                 }
             }
 
-
+            // These are the Gibbs calculations.
             double c_al_rhs = 2*(del_dGAlpha_dAl - del_dGBeta_dAl)*hphiprimesum2 + delsq_dGAlpha_dAl*hphisum + delsq_dGBeta_dAl*(1-hphisum) +
 					  (dGAlpha_dAl - dGBeta_dAl)*(hphidoubleprimesum + hphiprimesum1) + (W_Al - W_Ti)*(gphiprimesum + gphidoubleprimesum) ;
             double c_v_rhs = 2*(del_dGAlpha_dV - del_dGBeta_dV)*hphiprimesum2 + delsq_dGAlpha_dV*hphisum + delsq_dGBeta_dV*(1-hphisum) +
@@ -457,7 +468,7 @@ int main(int argc, char* argv[])
 
 
 
-
+      // Calculating dFdp for every variant.
 			MMSP::sparse<phi_type> dFdp;
 			phi_type dFall = 0.0;
 			phi_type phi_sum = 0.0 ;
@@ -471,6 +482,7 @@ int main(int argc, char* argv[])
 				}
 			}
 
+      // For the Lagrange multiplier so that you can get the sums of all phi.
 			phi_type phi_beta = 1 - phi_sum ;
 
 			for (int j = 0; j < length(grid(n)); j++)
