@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
         
         store_type newGrain;
 		
-		set(newGrain, 1) = 0.0;
+		MMSP::set(newGrain, 1) = 0.0;
 		MMSP::set(newGrain, 2) = 0.0;
 		MMSP::set(newGrain, 3) = 0.0;
 		MMSP::set(newGrain, 4) = 0.0;
