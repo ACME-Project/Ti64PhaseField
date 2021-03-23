@@ -178,18 +178,18 @@ Backward36.fft0Normalized(self12, self_real12);
 for(int n = 0 ; n < nodes(grid) ; n++)
 {
     MMSP::vector<int> x = position(grid, n) ;
-    set(nuc_grid(n), 1) = 1.0 ; // Testing the interaction energy for a nuclei of variant 1 
-    set(nuc_grid(n), 2) = 1.0 ;
-    set(nuc_grid(n), 3) = 1.0 ;
-    set(nuc_grid(n), 4) = 1.0 ;
-    set(nuc_grid(n), 5) = 1.0 ;
-    set(nuc_grid(n), 6) = 1.0 ;
-    set(nuc_grid(n), 7) = 1.0 ;
-    set(nuc_grid(n), 8) = 1.0 ;
-    set(nuc_grid(n), 9) = 1.0 ;
-    set(nuc_grid(n), 10) = 1.0 ;
-    set(nuc_grid(n), 11) = 1.0 ;
-    set(nuc_grid(n), 12) = 1.0 ;
+    MMSP::set(nuc_grid(n), 1) = 1.0 ; // Testing the interaction energy for a nuclei of variant 1 
+    MMSP::set(nuc_grid(n), 2) = 1.0 ;
+    MMSP::set(nuc_grid(n), 3) = 1.0 ;
+    MMSP::set(nuc_grid(n), 4) = 1.0 ;
+    MMSP::set(nuc_grid(n), 5) = 1.0 ;
+    MMSP::set(nuc_grid(n), 6) = 1.0 ;
+    MMSP::set(nuc_grid(n), 7) = 1.0 ;
+    MMSP::set(nuc_grid(n), 8) = 1.0 ;
+    MMSP::set(nuc_grid(n), 9) = 1.0 ;
+    MMSP::set(nuc_grid(n), 10) = 1.0 ;
+    MMSP::set(nuc_grid(n), 11) = 1.0 ;
+    MMSP::set(nuc_grid(n), 12) = 1.0 ;
     double phisum = 0.0 ;
     for(int h = 0 ; h < length(grid(x)) ; h++)
     {
@@ -201,60 +201,60 @@ for(int n = 0 ; n < nodes(grid) ; n++)
     }
     if(phisum > 0.1)  //Dont test if there is already alpha present. 
     {
-        set(intenergies(n), 1) = 0.0 ;
-        set(intenergies(n), 2) = 0.0 ;
-        set(intenergies(n), 3) = 0.0 ;     
-        set(intenergies(n), 4) = 0.0 ;
-        set(intenergies(n), 5) = 0.0 ;
-        set(intenergies(n), 6) = 0.0 ;  
-        set(intenergies(n), 7) = 0.0 ;
-        set(intenergies(n), 8) = 0.0 ;
-        set(intenergies(n), 9) = 0.0 ;     
-        set(intenergies(n), 10) = 0.0 ;
-        set(intenergies(n), 11) = 0.0 ;
-        set(intenergies(n), 12) = 0.0 ;           
-        set(intenergies(n), 13) = 0 ;
+        MMSP::set(intenergies(n), 1) = 0.0 ;
+        MMSP::set(intenergies(n), 2) = 0.0 ;
+        MMSP::set(intenergies(n), 3) = 0.0 ;     
+        MMSP::set(intenergies(n), 4) = 0.0 ;
+        MMSP::set(intenergies(n), 5) = 0.0 ;
+        MMSP::set(intenergies(n), 6) = 0.0 ;  
+        MMSP::set(intenergies(n), 7) = 0.0 ;
+        MMSP::set(intenergies(n), 8) = 0.0 ;
+        MMSP::set(intenergies(n), 9) = 0.0 ;     
+        MMSP::set(intenergies(n), 10) = 0.0 ;
+        MMSP::set(intenergies(n), 11) = 0.0 ;
+        MMSP::set(intenergies(n), 12) = 0.0 ;           
+        MMSP::set(intenergies(n), 13) = 0 ;
              
-        set(selfenergies(n), 1) = 0 ;
-        set(selfenergies(n), 2) = 0 ;
-        set(selfenergies(n), 3) = 0 ;
-        set(selfenergies(n), 4) = 0 ;
-        set(selfenergies(n), 5) = 0 ;
-        set(selfenergies(n), 6) = 0 ;
-        set(selfenergies(n), 7) = 0 ;
-        set(selfenergies(n), 8) = 0 ;
-        set(selfenergies(n), 9) = 0 ;
-        set(selfenergies(n), 10) = 0 ;
-        set(selfenergies(n), 11) = 0 ;
-        set(selfenergies(n), 12) = 0 ;
+        MMSP::set(selfenergies(n), 1) = 0 ;
+        MMSP::set(selfenergies(n), 2) = 0 ;
+        MMSP::set(selfenergies(n), 3) = 0 ;
+        MMSP::set(selfenergies(n), 4) = 0 ;
+        MMSP::set(selfenergies(n), 5) = 0 ;
+        MMSP::set(selfenergies(n), 6) = 0 ;
+        MMSP::set(selfenergies(n), 7) = 0 ;
+        MMSP::set(selfenergies(n), 8) = 0 ;
+        MMSP::set(selfenergies(n), 9) = 0 ;
+        MMSP::set(selfenergies(n), 10) = 0 ;
+        MMSP::set(selfenergies(n), 11) = 0 ;
+        MMSP::set(selfenergies(n), 12) = 0 ;
            
-        set(nuc_grid(n), 1) = 0.0 ;
-        set(nuc_grid(n), 2) = 0.0 ;
-        set(nuc_grid(n), 3) = 0.0 ;
-        set(nuc_grid(n), 4) = 0.0 ;
-        set(nuc_grid(n), 5) = 0.0 ;
-        set(nuc_grid(n), 6) = 0.0 ;
-        set(nuc_grid(n), 7) = 0.0 ;
-        set(nuc_grid(n), 8) = 0.0 ;
-        set(nuc_grid(n), 9) = 0.0 ;
-        set(nuc_grid(n), 10) = 0.0 ;
-        set(nuc_grid(n), 11) = 0.0 ;
-        set(nuc_grid(n), 12) = 0.0 ;          
+        MMSP::set(nuc_grid(n), 1) = 0.0 ;
+        MMSP::set(nuc_grid(n), 2) = 0.0 ;
+        MMSP::set(nuc_grid(n), 3) = 0.0 ;
+        MMSP::set(nuc_grid(n), 4) = 0.0 ;
+        MMSP::set(nuc_grid(n), 5) = 0.0 ;
+        MMSP::set(nuc_grid(n), 6) = 0.0 ;
+        MMSP::set(nuc_grid(n), 7) = 0.0 ;
+        MMSP::set(nuc_grid(n), 8) = 0.0 ;
+        MMSP::set(nuc_grid(n), 9) = 0.0 ;
+        MMSP::set(nuc_grid(n), 10) = 0.0 ;
+        MMSP::set(nuc_grid(n), 11) = 0.0 ;
+        MMSP::set(nuc_grid(n), 12) = 0.0 ;          
     }
     else
     {
-        set(intenergies(n), 1) = 4*3.14*9*dx*dx*nuc_grid(n)[1]*(elint_real1[x[0]][x[1]][x[2]]);  //Check documentation or Shen2007 for further info
-        set(intenergies(n), 2) = 4*3.14*9*dx*dx*nuc_grid(n)[2]*(elint_real2[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 3) = 4*3.14*9*dx*dx*nuc_grid(n)[3]*(elint_real3[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 4) = 4*3.14*9*dx*dx*nuc_grid(n)[4]*(elint_real4[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 5) = 4*3.14*9*dx*dx*nuc_grid(n)[5]*(elint_real5[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 6) = 4*3.14*9*dx*dx*nuc_grid(n)[6]*(elint_real6[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 7) = 4*3.14*9*dx*dx*nuc_grid(n)[7]*(elint_real7[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 8) = 4*3.14*9*dx*dx*nuc_grid(n)[8]*(elint_real8[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 9) = 4*3.14*9*dx*dx*nuc_grid(n)[9]*(elint_real9[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 10) = 4*3.14*9*dx*dx*nuc_grid(n)[10]*(elint_real10[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 11) = 4*3.14*9*dx*dx*nuc_grid(n)[11]*(elint_real11[x[0]][x[1]][x[2]]);
-        set(intenergies(n), 12) = 4*3.14*9*dx*dx*nuc_grid(n)[12]*(elint_real12[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 1) = 4*3.14*9*dx*dx*nuc_grid(n)[1]*(elint_real1[x[0]][x[1]][x[2]]);  //Check documentation or Shen2007 for further info
+        MMSP::set(intenergies(n), 2) = 4*3.14*9*dx*dx*nuc_grid(n)[2]*(elint_real2[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 3) = 4*3.14*9*dx*dx*nuc_grid(n)[3]*(elint_real3[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 4) = 4*3.14*9*dx*dx*nuc_grid(n)[4]*(elint_real4[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 5) = 4*3.14*9*dx*dx*nuc_grid(n)[5]*(elint_real5[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 6) = 4*3.14*9*dx*dx*nuc_grid(n)[6]*(elint_real6[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 7) = 4*3.14*9*dx*dx*nuc_grid(n)[7]*(elint_real7[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 8) = 4*3.14*9*dx*dx*nuc_grid(n)[8]*(elint_real8[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 9) = 4*3.14*9*dx*dx*nuc_grid(n)[9]*(elint_real9[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 10) = 4*3.14*9*dx*dx*nuc_grid(n)[10]*(elint_real10[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 11) = 4*3.14*9*dx*dx*nuc_grid(n)[11]*(elint_real11[x[0]][x[1]][x[2]]);
+        MMSP::set(intenergies(n), 12) = 4*3.14*9*dx*dx*nuc_grid(n)[12]*(elint_real12[x[0]][x[1]][x[2]]);
             
         int min_index = 1 ;  //Check documentation for the algorithm info
         int min_energy = INT_MAX ;
@@ -267,33 +267,33 @@ for(int n = 0 ; n < nodes(grid) ; n++)
             }
         }
                  
-        set(intenergies(n), 13) = min_index ;
+        MMSP::set(intenergies(n), 13) = min_index ;
             
-        set(selfenergies(n), 1) = 4*3.14*9*dx*dx*nuc_grid(n)[1]*nuc_grid(n)[1]*(self_real1[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 2) = 4*3.14*9*dx*dx*nuc_grid(n)[2]*nuc_grid(n)[2]*(self_real2[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 3) = 4*3.14*9*dx*dx*nuc_grid(n)[3]*nuc_grid(n)[3]*(self_real3[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 4) = 4*3.14*9*dx*dx*nuc_grid(n)[4]*nuc_grid(n)[4]*(self_real4[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 5) = 4*3.14*9*dx*dx*nuc_grid(n)[5]*nuc_grid(n)[5]*(self_real5[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 6) = 4*3.14*9*dx*dx*nuc_grid(n)[6]*nuc_grid(n)[6]*(self_real6[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 7) = 4*3.14*9*dx*dx*nuc_grid(n)[7]*nuc_grid(n)[7]*(self_real7[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 8) = 4*3.14*9*dx*dx*nuc_grid(n)[8]*nuc_grid(n)[8]*(self_real8[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 9) = 4*3.14*9*dx*dx*nuc_grid(n)[9]*nuc_grid(n)[9]*(self_real9[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 10) = 4*3.14*9*dx*dx*nuc_grid(n)[10]*nuc_grid(n)[10]*(self_real10[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 11) = 4*3.14*9*dx*dx*nuc_grid(n)[11]*nuc_grid(n)[11]*(self_real11[x[0]][x[1]][x[2]]);
-        set(selfenergies(n), 12) = 4*3.14*9*dx*dx*nuc_grid(n)[12]*nuc_grid(n)[12]*(self_real12[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 1) = 4*3.14*9*dx*dx*nuc_grid(n)[1]*nuc_grid(n)[1]*(self_real1[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 2) = 4*3.14*9*dx*dx*nuc_grid(n)[2]*nuc_grid(n)[2]*(self_real2[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 3) = 4*3.14*9*dx*dx*nuc_grid(n)[3]*nuc_grid(n)[3]*(self_real3[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 4) = 4*3.14*9*dx*dx*nuc_grid(n)[4]*nuc_grid(n)[4]*(self_real4[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 5) = 4*3.14*9*dx*dx*nuc_grid(n)[5]*nuc_grid(n)[5]*(self_real5[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 6) = 4*3.14*9*dx*dx*nuc_grid(n)[6]*nuc_grid(n)[6]*(self_real6[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 7) = 4*3.14*9*dx*dx*nuc_grid(n)[7]*nuc_grid(n)[7]*(self_real7[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 8) = 4*3.14*9*dx*dx*nuc_grid(n)[8]*nuc_grid(n)[8]*(self_real8[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 9) = 4*3.14*9*dx*dx*nuc_grid(n)[9]*nuc_grid(n)[9]*(self_real9[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 10) = 4*3.14*9*dx*dx*nuc_grid(n)[10]*nuc_grid(n)[10]*(self_real10[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 11) = 4*3.14*9*dx*dx*nuc_grid(n)[11]*nuc_grid(n)[11]*(self_real11[x[0]][x[1]][x[2]]);
+        MMSP::set(selfenergies(n), 12) = 4*3.14*9*dx*dx*nuc_grid(n)[12]*nuc_grid(n)[12]*(self_real12[x[0]][x[1]][x[2]]);
             
-        set(nuc_grid(n), 1) = 0.0 ; //Resetting it back to zero. 
-        set(nuc_grid(n), 2) = 0.0 ;
-        set(nuc_grid(n), 3) = 0.0 ;
-        set(nuc_grid(n), 4) = 0.0 ;
-        set(nuc_grid(n), 5) = 0.0 ;
-        set(nuc_grid(n), 6) = 0.0 ;
-        set(nuc_grid(n), 7) = 0.0 ;
-        set(nuc_grid(n), 8) = 0.0 ;
-        set(nuc_grid(n), 9) = 0.0 ;
-        set(nuc_grid(n), 10) = 0.0 ;
-        set(nuc_grid(n), 11) = 0.0 ;
-        set(nuc_grid(n), 12) = 0.0 ;  
+        MMSP::set(nuc_grid(n), 1) = 0.0 ; //Resetting it back to zero. 
+        MMSP::set(nuc_grid(n), 2) = 0.0 ;
+        MMSP::set(nuc_grid(n), 3) = 0.0 ;
+        MMSP::set(nuc_grid(n), 4) = 0.0 ;
+        MMSP::set(nuc_grid(n), 5) = 0.0 ;
+        MMSP::set(nuc_grid(n), 6) = 0.0 ;
+        MMSP::set(nuc_grid(n), 7) = 0.0 ;
+        MMSP::set(nuc_grid(n), 8) = 0.0 ;
+        MMSP::set(nuc_grid(n), 9) = 0.0 ;
+        MMSP::set(nuc_grid(n), 10) = 0.0 ;
+        MMSP::set(nuc_grid(n), 11) = 0.0 ;
+        MMSP::set(nuc_grid(n), 12) = 0.0 ;  
     }
 }
     
