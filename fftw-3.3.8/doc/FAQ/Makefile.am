@@ -1,37 +1,23 @@
-SUBDIRS = FAQ
+BFNNCONV_SRC = bfnnconv.pl m-ascii.pl m-html.pl m-info.pl m-lout.pl m-post.pl
 
-info_TEXINFOS = fftw3.texi
-fftw3_TEXINFOS = acknowledgements.texi cindex.texi fftw3.texi findex.texi install.texi intro.texi legacy-fortran.texi license.texi modern-fortran.texi mpi.texi other.texi reference.texi threads.texi tutorial.texi upgrading.texi version.texi rfftwnd.pdf rfftwnd.eps
+FAQ = fftw-faq.ascii fftw-faq.html
+EXTRA_DIST = fftw-faq.bfnn $(FAQ) $(BFNNCONV_SRC) html.refs
 
-DVIPS = dvips -Pwww
+html.refs2: html.refs
+	cp -f ${srcdir}/html.refs html.refs2
 
-EQN_IMAGES = equation-dft.png equation-dht.png equation-idft.png	\
-equation-redft00.png equation-redft01.png equation-redft10.png		\
-equation-redft11.png equation-rodft00.png equation-rodft01.png		\
-equation-rodft10.png equation-rodft11.png
+$(FAQ): $(BFNNCONV_SRC) fftw-faq.bfnn html.refs2
+	@echo converting...
+	perl -I${srcdir} ${srcdir}/bfnnconv.pl < ${srcdir}/fftw-faq.bfnn
+	@echo converting again...
+	perl -I${srcdir} ${srcdir}/bfnnconv.pl < ${srcdir}/fftw-faq.bfnn
+	rm -f fftw-faq.ascii
+	mv stdin.ascii fftw-faq.ascii
+	rm -rf fftw-faq.html
+	mv -f stdin.html fftw-faq.html
 
-EXTRA_DIST = f77_wisdom.f fftw3.pdf html rfftwnd.fig rfftwnd.eps	\
-rfftwnd.pdf rfftwnd-for-html.png $(EQN_IMAGES)
+faq: $(FAQ)
 
-html: $(fftw3_TEXINFOS) $(EQN_IMAGES) rfftwnd-for-html.png
-	$(MAKEINFO) $(AM_MAKEINFOFLAGS) $(MAKEINFOFLAGS) -I $(srcdir) \
-		--html --number-sections -o html fftw3.texi
-	for i in $(EQN_IMAGES); do cp -f ${srcdir}/$$i html; done
-	cp -f ${srcdir}/rfftwnd-for-html.png html
-
-maintainer-clean-local:
-	rm -rf html
-
-if MAINTAINER_MODE
-# generate the figure for the manual and distribute the binaries, so that
-# people don't need to have fig2dev installed.
-rfftwnd.eps: rfftwnd.fig
-	fig2dev -L eps -m .7 ${srcdir}/rfftwnd.fig rfftwnd.eps
-
-rfftwnd-for-html.png: rfftwnd.fig
-	fig2dev -L png -m 1 ${srcdir}/rfftwnd.fig rfftwnd-for-html.png
-
-rfftwnd.pdf: rfftwnd.fig
-	fig2dev -L pdf -m .7 ${srcdir}/rfftwnd.fig rfftwnd.pdf
-
-endif
+clean-local:
+	rm -f *~ core a.out *.lout *.ps *.info *.ascii *.xrefdb *.post
+	rm -rf *.html html.refs2
