@@ -11,7 +11,7 @@ compiler = g++ -std=c++11 -O3
 pcompiler = mpic++ -std=c++11 -O3
 flags = -I$(incdir) -I$(algodir) -I$(utildir)
 prefourierflags = -I./fftw-3.3.8/api -fopenmp 
-postfourierflags = .//fftw++-2.05/fftw++.cc  
+postfourierflags = ./fftw++-2.05/fftw++.cc  
 fourierlinkers = -lfftw3 -lfftw3_omp -lm
 
 # dependencies
@@ -21,9 +21,9 @@ core = #$Thermo.hpp \
        $(incdir)/MMSP.grid.h \
        $(incdir)/MMSP.sparse.h \
 
-# Serial compilation - without fftw
-sparse: $(core)
-	$(pcompiler) $(flags) $(prefourierflags) ./Serial/main.cpp $(postfourierflags) $(fourierlinkers) $< -o sparse.out -lz  #-include mpi.h
+# Serial compilation - without fftw. Remove the fftw-related functions in the code before you can use this compilation 
+#sparse: $(core)
+#	$(compiler) ./Serial/main.cpp $< -o sparse.out -lz  #-include mpi.h
 
 #Serial compilation - with fftw
 sparse_serial: $(core)
@@ -34,8 +34,8 @@ parallel: $(core)
 	$(pcompiler) $(flags) ./Parallel/main.cpp $< -o parallel.out -lz  #-include mpi.h
 
 #Parallel compilation - with fftw (not recommended. Integration of mmsp with fftw on a parallel environment has not been tested)
-parallel: $(core)
-	$(pcompiler) $(flags) $(prefourierflags)  "Add your path for main.cpp here" $(postfourierflags) $(fourierlinkers) $< -o parallel.out -lz  #-include mpi.h
+#parallel: $(core)
+	#$(pcompiler) $(flags) $(prefourierflags)  "Add your path for main.cpp here" $(postfourierflags) $(fourierlinkers) $< -o parallel.out -lz  #-include mpi.h
 
 
 
