@@ -1,7 +1,7 @@
 # Makefile
 
 # includes
-MMSP_PATH= "Add-your-mmsp-path"
+MMSP_PATH= ./mmsp
 incdir = $(MMSP_PATH)/include
 utildir = $(MMSP_PATH)/utility
 algodir = $(MMSP_PATH)/algorithms
@@ -10,8 +10,8 @@ algodir = $(MMSP_PATH)/algorithms
 compiler = g++ -std=c++11 -O3 
 pcompiler = mpic++ -std=c++11 -O3
 flags = -I$(incdir) -I$(algodir) -I$(utildir)
-prefourierflags = "Add your path for fftw-3.3.8/api. Add -fopenmp linker."  For example: -I/home/arun/fftw-3.3.8/api -fopenmp 
-postfourierflags = "Add your path for fftw++-2.05/fftw++.cc" For example: /home/arun/fftw++-2.05/fftw++.cc  
+prefourierflags = -I./fftw-3.3.8/api -fopenmp 
+postfourierflags = .//fftw++-2.05/fftw++.cc  
 fourierlinkers = -lfftw3 -lfftw3_omp -lm
 
 # dependencies
@@ -23,15 +23,15 @@ core = #$Thermo.hpp \
 
 # Serial compilation - without fftw
 sparse: $(core)
-	$(pcompiler) $(flags) $(prefourierflags)  "Add your path for main.cpp here" $(postfourierflags) $(fourierlinkers) $< -o sparse.out -lz  #-include mpi.h
+	$(pcompiler) $(flags) $(prefourierflags) ./Serial/main.cpp $(postfourierflags) $(fourierlinkers) $< -o sparse.out -lz  #-include mpi.h
 
 #Serial compilation - with fftw
 sparse_serial: $(core)
-	$(compiler) $(flags) $(prefourierflags)  "Add your path for main.cpp here" $(postfourierflags) $(fourierlinkers)  $< -o sparse_serial.out -lz #
+	$(compiler) $(flags) $(prefourierflags) ./Serial/main.cpp $(postfourierflags) $(fourierlinkers)  $< -o sparse_serial.out -lz #
 	
 #Parallel compilation - without fftw
 parallel: $(core)
-	$(pcompiler) $(flags) main.cpp $< -o parallel.out -lz  #-include mpi.h
+	$(pcompiler) $(flags) ./Parallel/main.cpp $< -o parallel.out -lz  #-include mpi.h
 
 #Parallel compilation - with fftw (not recommended. Integration of mmsp with fftw on a parallel environment has not been tested)
 parallel: $(core)
