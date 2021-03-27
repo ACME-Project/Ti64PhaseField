@@ -1,0 +1,499 @@
+Making install in support
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/support'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/support'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/support'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/support'
+Making install in kernel
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/kernel'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/kernel'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/kernel'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/kernel'
+Making install in simd-support
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/simd-support'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/simd-support'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/simd-support'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/simd-support'
+Making install in dft
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft'
+Making install in scalar
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar'
+Making install in codelets
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar/codelets'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar/codelets'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar/codelets'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar/codelets'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar/codelets'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar/codelets'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar'
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/scalar'
+Making install in simd
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd'
+Making install in common
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/common'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/common'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/common'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/common'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/common'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/common'
+Making install in sse2
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/sse2'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/sse2'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/sse2'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/sse2'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/sse2'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/sse2'
+Making install in avx
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx'
+Making install in avx-128-fma
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx-128-fma'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx-128-fma'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx-128-fma'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx-128-fma'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx-128-fma'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx-128-fma'
+Making install in avx2
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2'
+Making install in avx2-128
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2-128'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2-128'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2-128'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2-128'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2-128'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx2-128'
+Making install in avx512
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx512'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx512'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx512'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx512'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx512'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/avx512'
+Making install in kcvi
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/kcvi'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/kcvi'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/kcvi'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/kcvi'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/kcvi'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/kcvi'
+Making install in altivec
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/altivec'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/altivec'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/altivec'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/altivec'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/altivec'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/altivec'
+Making install in vsx
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/vsx'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/vsx'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/vsx'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/vsx'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/vsx'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/vsx'
+Making install in neon
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/neon'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/neon'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/neon'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/neon'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/neon'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/neon'
+Making install in generic-simd128
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd128'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd128'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd128'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd128'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd128'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd128'
+Making install in generic-simd256
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd256'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd256'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd256'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd256'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd256'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd/generic-simd256'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd'
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft/simd'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/dft'
+Making install in rdft
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft'
+Making install in scalar
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar'
+Making install in r2cf
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cf'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cf'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cf'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cf'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cf'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cf'
+Making install in r2cb
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cb'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cb'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cb'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cb'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cb'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2cb'
+Making install in r2r
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2r'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2r'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2r'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2r'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2r'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar/r2r'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar'
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/scalar'
+Making install in simd
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd'
+Making install in common
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/common'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/common'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/common'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/common'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/common'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/common'
+Making install in sse2
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/sse2'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/sse2'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/sse2'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/sse2'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/sse2'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/sse2'
+Making install in avx
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx'
+Making install in avx-128-fma
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx-128-fma'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx-128-fma'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx-128-fma'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx-128-fma'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx-128-fma'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx-128-fma'
+Making install in avx2
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2'
+Making install in avx2-128
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2-128'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2-128'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2-128'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2-128'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2-128'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx2-128'
+Making install in avx512
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx512'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx512'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx512'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx512'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx512'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/avx512'
+Making install in kcvi
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/kcvi'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/kcvi'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/kcvi'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/kcvi'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/kcvi'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/kcvi'
+Making install in altivec
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/altivec'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/altivec'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/altivec'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/altivec'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/altivec'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/altivec'
+Making install in vsx
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/vsx'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/vsx'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/vsx'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/vsx'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/vsx'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/vsx'
+Making install in neon
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/neon'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/neon'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/neon'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/neon'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/neon'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/neon'
+Making install in generic-simd128
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd128'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd128'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd128'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd128'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd128'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd128'
+Making install in generic-simd256
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd256'
+make  install-am
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd256'
+make[5]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd256'
+make[5]: Nothing to be done for 'install-exec-am'.
+make[5]: Nothing to be done for 'install-data-am'.
+make[5]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd256'
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd256'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd/generic-simd256'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd'
+make[4]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft/simd'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/rdft'
+Making install in reodft
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/reodft'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/reodft'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/reodft'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/reodft'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/reodft'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/reodft'
+Making install in api
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/api'
+make  install-am
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/api'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/api'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /bin/mkdir -p '/usr/local/include'
+ /usr/bin/install -c -m 644 fftw3.h fftw3.f fftw3l.f03 fftw3q.f03 '/usr/local/include'
+ /bin/mkdir -p '/usr/local/include'
+ /usr/bin/install -c -m 644 fftw3.f03 '/usr/local/include'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/api'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/api'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/api'
+Making install in libbench2
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/libbench2'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/libbench2'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/libbench2'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/libbench2'
+Making install in .
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8'
+ /bin/mkdir -p '/usr/local/lib'
+ /bin/bash ./libtool   --mode=install /usr/bin/install -c   libfftw3.la '/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libfftw3.lai /usr/local/lib/libfftw3.la
+libtool: install: /usr/bin/install -c .libs/libfftw3.a /usr/local/lib/libfftw3.a
+libtool: install: chmod 644 /usr/local/lib/libfftw3.a
+libtool: install: ranlib /usr/local/lib/libfftw3.a
+libtool: finish: PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/sbin" ldconfig -n /usr/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+ /bin/mkdir -p '/usr/local/lib/cmake/fftw3'
+ /usr/bin/install -c -m 644 FFTW3Config.cmake FFTW3ConfigVersion.cmake '/usr/local/lib/cmake/fftw3'
+ /bin/mkdir -p '/usr/local/lib/pkgconfig'
+ /usr/bin/install -c -m 644 fftw3.pc '/usr/local/lib/pkgconfig'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8'
+Making install in threads
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/threads'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/threads'
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/threads'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/threads'
+Making install in tests
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tests'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tests'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tests'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tests'
+Making install in mpi
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/mpi'
+make  install-am
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/mpi'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/mpi'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/mpi'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/mpi'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/mpi'
+Making install in doc
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc'
+Making install in FAQ
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc/FAQ'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc/FAQ'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc/FAQ'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc/FAQ'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc'
+make[3]: Nothing to be done for 'install-exec-am'.
+ /bin/mkdir -p '/usr/local/share/info'
+ /usr/bin/install -c -m 644 ./fftw3.info ./fftw3.info-1 ./fftw3.info-2 '/usr/local/share/info'
+ install-info --info-dir='/usr/local/share/info' '/usr/local/share/info/fftw3.info'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/doc'
+Making install in tools
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tools'
+make  install-am
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tools'
+make[3]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tools'
+ /bin/mkdir -p '/usr/local/bin'
+  /bin/bash ../libtool   --mode=install /usr/bin/install -c fftw-wisdom '/usr/local/bin'
+libtool: install: /usr/bin/install -c fftw-wisdom /usr/local/bin/fftw-wisdom
+ /bin/mkdir -p '/usr/local/bin'
+ /usr/bin/install -c fftw-wisdom-to-conf '/usr/local/bin'
+ /bin/mkdir -p '/usr/local/share/man/man1'
+ /usr/bin/install -c -m 644 fftw-wisdom-to-conf.1 fftw-wisdom.1 '/usr/local/share/man/man1'
+make[3]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tools'
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tools'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/tools'
+Making install in m4
+make[1]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/m4'
+make[2]: Entering directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/m4'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/m4'
+make[1]: Leaving directory '/home/arun/Documents/mmsp-arun/fftw-3.3.8/m4'
