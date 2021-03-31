@@ -125,6 +125,30 @@ double nodesum(MMSP::grid<dim, store_type> grid, MMSP::vector<int> s)
 	return phisum ;
 }
 
+template <int dim, typename T> MMSP::vector<T> gradientsq(const MMSP::grid<dim, T>& GRID, const MMSP::vector<int>& x)
+{
+	MMSP::vector<T> gradientsq(dim);
+	MMSP::vector<int> s = x;
+	
+	const T& y = GRID(x);
+
+	for (int i=0; i<dim; i++) {
+		s[i] += 1;
+		const T& yh = GRID(s);
+		s[i] -= 2;
+		const T& yl = GRID(s);
+		s[i] += 1;
+
+		double weight = 1.0 / (MMSP::dx(GRID, i) * MMSP::dx(GRID, i)) ;
+		gradientsq[i] = weight * (yh - 2.0 * y + yl);
+	}
+	return gradientsq;
+}
+
+template <int dim, typename T> MMSP::vector<T> gradsq(const MMSP::grid<dim, T>& GRID, const MMSP::vector<int>& x)
+{
+	return gradientsq(GRID, x);
+}
 
 
 void initialize_epsi()

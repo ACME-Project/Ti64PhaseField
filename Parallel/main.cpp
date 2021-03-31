@@ -99,36 +99,36 @@ int main(int argc, char* argv[])
 	{
 		MMSP::vector<int> x = position(grid, n);
 		store_type newGrain;
-		set(gradsqcal_grid(n), 1) = 0.0 ;
-		set(gradsqcv_grid(n), 1) = 0.0 ;
-        set(gradsqcal_grid(n), 2) = 0.0 ;
-		set(gradsqcv_grid(n), 2) = 0.0 ;
+		MMSP::set(gradsqcal_grid(n), 1) = 0.0 ;
+		MMSP::set(gradsqcv_grid(n), 1) = 0.0 ;
+        MMSP::set(gradsqcal_grid(n), 2) = 0.0 ;
+		MMSP::set(gradsqcv_grid(n), 2) = 0.0 ;
         
         //store_type newGrain;
-        set(newGrain, 1) = 0.0;
-        set(newGrain, 3) = 0.0;
-        set(newGrain, 4) = 0.0;
-        set(newGrain, 5) = 0.0;
-        set(newGrain, 15) = 0.0 ;
-		set(newGrain, 20) = 0.10 ;
-		set(newGrain, 21) = 0.036 ;
+        MMSP::set(newGrain, 1) = 0.0;
+        MMSP::set(newGrain, 3) = 0.0;
+        MMSP::set(newGrain, 4) = 0.0;
+        MMSP::set(newGrain, 5) = 0.0;
+        MMSP::set(newGrain, 15) = 0.0 ;
+		MMSP::set(newGrain, 20) = 0.10 ;
+		MMSP::set(newGrain, 21) = 0.036 ;
 
         
-        if(x[0]==1 & x[1] == 1) set(newGrain, 2) = 1.0 ;  
-        else if(x[0]==2 & x[1] == (nx/50)*8) set(newGrain, 2) = 1.0 ; 
-        else if(x[0]==2 & x[1] == 12*(nx/50)) set(newGrain, 2) = 1.0 ; 
-        else if(x[0]==2 & x[1] == 16*(nx/50)) set(newGrain, 2) = 1.0 ; 
-        else if(x[0]==2 & x[1] == 20*(nx/50)) set(newGrain, 2) = 1.0 ; 
-        else if(x[0]==2 & x[1] == 24*(nx/50)) set(newGrain, 2) = 1.0 ; 
-        else if(x[0]==2 & x[1] == 32*(nx/50)) set(newGrain, 2) = 1.0 ; 
-        else if(x[0]==2 & x[1] == 36*(nx/50)) set(newGrain, 2) = 1.0 ; 
-        else set(newGrain, 2) = 0.0 ; 
+        if(x[0]==1 & x[1] == 1) MMSP::set(newGrain, 2) = 1.0 ;  
+        else if(x[0]==2 & x[1] == (nx/50)*8) MMSP::set(newGrain, 2) = 1.0 ; 
+        else if(x[0]==2 & x[1] == 12*(nx/50)) MMSP::set(newGrain, 2) = 1.0 ; 
+        else if(x[0]==2 & x[1] == 16*(nx/50)) MMSP::set(newGrain, 2) = 1.0 ; 
+        else if(x[0]==2 & x[1] == 20*(nx/50)) MMSP::set(newGrain, 2) = 1.0 ; 
+        else if(x[0]==2 & x[1] == 24*(nx/50)) MMSP::set(newGrain, 2) = 1.0 ; 
+        else if(x[0]==2 & x[1] == 32*(nx/50)) MMSP::set(newGrain, 2) = 1.0 ; 
+        else if(x[0]==2 & x[1] == 36*(nx/50)) MMSP::set(newGrain, 2) = 1.0 ; 
+        else MMSP::set(newGrain, 2) = 0.0 ; 
 
 		
-		set(gradsqcal_grid(n),1) = 0.0 ;
-        set(gradsqcv_grid(n), 1) = 0.0 ;
-        set(gradsqcal_grid(n),2) = 0.0 ;
-        set(gradsqcv_grid(n), 2) = 0.0 ;
+		MMSP::set(gradsqcal_grid(n),1) = 0.0 ;
+        MMSP::set(gradsqcv_grid(n), 1) = 0.0 ;
+        MMSP::set(gradsqcal_grid(n),2) = 0.0 ;
+        MMSP::set(gradsqcv_grid(n), 2) = 0.0 ;
         
 		grid(n) = newGrain;
 		
@@ -176,11 +176,11 @@ int main(int argc, char* argv[])
 			MMSP::vector<store_type> gradientsqtemp = gradsq(grid, x) ;
 			double temp1 = 0.0 ;
 			double temp2 = 0.0 ;
-            set(gradsqcal_grid(n),1) = gradientsqtemp[0][20] ;
-            set(gradsqcal_grid(n),2) = gradientsqtemp[1][20] ;
+            MMSP::set(gradsqcal_grid(n),1) = gradientsqtemp[0][20] ;
+            MMSP::set(gradsqcal_grid(n),2) = gradientsqtemp[1][20] ;
             
-			set(gradsqcv_grid(n),1) = gradientsqtemp[0][21] ;
-            set(gradsqcv_grid(n),2) = gradientsqtemp[1][21] ;	
+			MMSP::set(gradsqcv_grid(n),1) = gradientsqtemp[0][21] ;
+            MMSP::set(gradsqcv_grid(n),2) = gradientsqtemp[1][21] ;	
 		}
             
         // Generating output
@@ -228,8 +228,8 @@ int main(int argc, char* argv[])
                     else if(x[1]==1 || x[1]==ny-2) nuc_index = 1 ; 
                     cout<<"Nucleating index: "<<nuc_index<<" at position "<<x[0]<<" "<<x[1]<<endl;
                     variant_ids.push_back(nuc_index);
-                    set(grid(n), nuc_index) = 1.0; 
-                    set(grid(n), 15) = 1.0 ;
+                    MMSP::set(grid(n), nuc_index) = 1.0; 
+                    MMSP::set(grid(n), 15) = 1.0 ;
                     if(variant_ids.size() > 75) break ;
                 }
             }
@@ -267,7 +267,7 @@ int main(int argc, char* argv[])
                     nuc_index = (int)(rand()%5) + 1 ;
                     cout<<"Nucleating index: "<<nuc_index<<" at position "<<x[0]<<" "<<x[1]<<endl;
                     variant_ids.push_back(nuc_index);
-                    set(grid(n), nuc_index) = 1.0; 
+                    MMSP::set(grid(n), nuc_index) = 1.0; 
                 }
             }
         }
@@ -355,19 +355,19 @@ int main(int argc, char* argv[])
 
             if((grid(n)[20] + dt*(Dalal*(c_al_rhs)- kappa_c*gradp4_cal)) < 0.005)
             {
-                set(grid(n), 20) = 0.005 ;
+                MMSP::set(grid(n), 20) = 0.005 ;
             }
             else
             {
-                set(grid(n), 20) = grid(n)[20] + dt*(Dalal*(c_al_rhs)- kappa_c*gradp4_cal) ; 
+                MMSP::set(grid(n), 20) = grid(n)[20] + dt*(Dalal*(c_al_rhs)- kappa_c*gradp4_cal) ; 
             }
             if((grid(n)[21] + dt*(Dvv*(c_v_rhs) - kappa_c*gradp4_cv)) < 0.005)
             {
-                set(grid(n), 21) = 0.005 ;
+                MMSP::set(grid(n), 21) = 0.005 ;
             }
             else
             {
-                set(grid(n), 21) = grid(n)[21] + dt*(Dvv*(c_v_rhs) - kappa_c*gradp4_cv) ; 
+                MMSP::set(grid(n), 21) = grid(n)[21] + dt*(Dvv*(c_v_rhs) - kappa_c*gradp4_cv) ; 
             }
 		
     
@@ -414,7 +414,7 @@ int main(int argc, char* argv[])
 						}
 					}
 					double df = gdiff(grid(n)[20], grid(n)[21], T);
-					set(dFdp, jindex) = -(df)*hphiprime[jindex-1] + interaction_energy - lap_aniso ;    //+ strain_energy[jindex] 
+					MMSP::set(dFdp, jindex) = -(df)*hphiprime[jindex-1] + interaction_energy - lap_aniso ;    //+ strain_energy[jindex] 
 					dFall += dFdp[jindex];	
 				}
 			}
@@ -426,8 +426,8 @@ int main(int argc, char* argv[])
 				if(hindex<=12)
 				{
 					store_type dpdt;
-					set(dpdt, hindex) = -L * (dFdp[hindex]);
-					set(grid(n), hindex) = grid(n)[hindex] + dt * dpdt[hindex];	
+					MMSP::set(dpdt, hindex) = -L * (dFdp[hindex]);
+					MMSP::set(grid(n), hindex) = grid(n)[hindex] + dt * dpdt[hindex];	
 				}
 			}				
 		}
