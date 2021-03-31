@@ -99,7 +99,7 @@ sfts eigen_alpha[12];
 //----------Including the various modules-----------//
 
 #include "Array.h"
-#include "/home/arun/Documents/mmsp-arun/fftw++-2.05/fftw++.h"
+#include "../fftw++-2.05/fftw++.h"
 
 //Namespaces required for fftw 
 using namespace utils;
