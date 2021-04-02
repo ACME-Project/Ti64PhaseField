@@ -23,7 +23,16 @@ The following repos have been tested for compilation errors:
 
 ### Compilations under development
 
-Parallel computation with fftw. The roadblock here is that fftw and mmsp divide the data domain in different ways. So there needs to be an extra step to gather the whole grid from mmsp, and pass this grid to fftw.
+Parallel computation with fftw. 
+
+The current stage of testing has completed the following steps:
+
+1.) double and complex arrays have been defined under the rules of fftw parallelization
+2.) dft plans have been defined for forward and inverse transforms under mpi environment
+
+Next steps:
+
+Reproduce the serial fftw computations.
 
 
 ### Model - modules
