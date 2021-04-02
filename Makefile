@@ -10,9 +10,10 @@ algodir = $(MMSP_PATH)/algorithms
 compiler = g++ -std=c++11 -O3 
 pcompiler = mpic++ -std=c++11 -O3
 flags = -I$(incdir) -I$(algodir) -I$(utildir)
-prefourierflags = -I./fftw-3.3.8/api -fopenmp 
+prefourierflags = -I./fftw-3.3.9/api -fopenmp 
 postfourierflags = ./fftw++-2.05/fftw++.cc  
-fourierlinkers = -lfftw3 -lfftw3_omp -lm
+fourierlinkers = -lfftw3 -lfftw3_omp -lm  
+fourier_mpi_linkers = -lfftw3 -lfftw3_mpi -lm  
 
 # dependencies
 core = #$Thermo.hpp \
@@ -32,10 +33,9 @@ sparse_serial: $(core)
 #Parallel compilation - without fftw
 parallel: $(core)
 	$(pcompiler) $(flags) ./Parallel/main.cpp $< -o parallel.out -lz  #-include mpi.h
-
-#Parallel compilation - with fftw (not recommended. Integration of mmsp with fftw on a parallel environment has not been tested)
-#parallel: $(core)
-	#$(pcompiler) $(flags) $(prefourierflags)  "Add your path for main.cpp here" $(postfourierflags) $(fourierlinkers) $< -o parallel.out -lz  #-include mpi.h
+	
+test: $(core)
+	$(pcompiler) $(flags) $(prefourierflags)  ./Parallel_fftw/main.cpp $(postfourierflags) $(fourier_mpi_linkers) $< -o test.out -lz  #-include mpi.h
 
 
 
@@ -66,3 +66,9 @@ mmsp2xyz : mmsp2xyz.cpp
 
 clean:
 	rm -rf sparse.out output_* pf_* delta* c_* IE* *~ variant*
+	
+	
+
+#Parallel compilation - with fftw (not recommended. Integration of mmsp with fftw on a parallel environment has not been tested)
+#parallel: $(core)
+	#$(pcompiler) $(flags) $(prefourierflags)  "Add your path for main.cpp here" $(postfourierflags) $(fourierlinkers) $< -o parallel.out -lz  #-include mpi.h
