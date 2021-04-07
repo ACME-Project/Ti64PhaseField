@@ -61,47 +61,15 @@ int main(int argc, char* argv[])
     cout<<"Hello world from rank:"<< world_rank<<", out of processors: "<<world_size<<" with local limits as: "<<x0(grid)<<","<<x1(grid)<<" "<<y0(grid)<<","<<y1(grid)<<endl;
 	
     
-    const int node_total = nx_local*ny_local ; 
+    const int node_total = nx_local*ny_local*nz_local ; 
 	double G_Alpha[node_total], G_Beta[node_total], W[node_total] ; 
     
-    //#include "farray.hpp"
-    
-    //Container and plan definitions for syncing fftw-mpi with mmsp-mpi
     ptrdiff_t alloc_local, local_n0, local_0_start;
     
-    alloc_local = fftw_mpi_local_size_3d(nx, ny, nz, MPI_COMM_WORLD, &local_n0, &local_0_start);
+    #include "farray.hpp"
     
-    double *f1 = fftw_alloc_real(alloc_local);
+    //Container and plan definitions for syncing fftw-mpi with mmsp-mpi
     
-    fftw_complex *F1 = fftw_alloc_complex(alloc_local);
-    
-    fftw_plan plan_r2c_1 = fftw_mpi_plan_dft_r2c_3d(nx, ny, nz, f1, F1, MPI_COMM_WORLD, FFTW_ESTIMATE);  
-    
-    fftw_complex *dfdstr = fftw_alloc_complex(alloc_local);
-    
-    double *dfdstr_real1 = fftw_alloc_real(alloc_local);
-    
-    fftw_plan plan_c2r_1 = fftw_mpi_plan_dft_c2r_3d(nx, ny, nz, dfdstr, dfdstr_real1, MPI_COMM_WORLD, FFTW_ESTIMATE);  
-    
-    fftw_complex *elint1 = fftw_alloc_complex(alloc_local);
-    
-    double *elint_real1 = fftw_alloc_real(alloc_local);
-    
-    fftw_plan plan_c2r_2 = fftw_mpi_plan_dft_c2r_3d(nx, ny, nz, elint1, elint_real1, MPI_COMM_WORLD, FFTW_ESTIMATE);  
-    
-    fftw_complex *self1 = fftw_alloc_complex(alloc_local);
-    
-    double *self_real1 = fftw_alloc_real(alloc_local);
-    
-    fftw_plan plan_c2r_3 = fftw_mpi_plan_dft_c2r_3d(nx, ny, nz, self1, self_real1, MPI_COMM_WORLD, FFTW_ESTIMATE);  
-    
-    fftw_complex *fstr = fftw_alloc_complex(alloc_local);
-    
-    double *fstr_real = fftw_alloc_real(alloc_local);
-    
-    fftw_plan plan_c2r_4 = fftw_mpi_plan_dft_c2r_3d(nx, ny, nz, fstr, fstr_real, MPI_COMM_WORLD, FFTW_ESTIMATE);  
-    
-    std::cout<<"Defined the fft arrays"<<endl;
     
 	MMSP::b0(grid,0) = MMSP::Dirichlet;
 	MMSP::b1(grid,0) = MMSP::Dirichlet;
@@ -207,17 +175,31 @@ int main(int argc, char* argv[])
             L_orig = fp/(T_trans-T) ; //v_alpha*T_trans/((T_trans - T)*heat*5e-07) ;
             L = L_orig/L_norm; //exp(a-b/T) ; //  
         }
-        
-        for(int n = 0 ; n < nodes(grid) ; n++)
+        MMSP::vector<int> x;
+        x.append(1);
+        x.append(2);
+        x.append(3);
+        for(int i = local_0_start; i < local_0_start + 12 ; i++)
         {
-            MMSP::vector<int> x = position(grid, n) ;
-            f1[x[0]*ny*nz + x[1]*nz + x[2]] = grid(n)[1] ;
-            //f1(x[0], x[1], x[2])=grid(n)[1] ;    
+            for(int j = 0 ; j < ny ; j++)
+            {
+                for(int k = 0 ; k < nz ; k++)
+                {
+                    MMSP::vector<int> x;
+                    x.append(i);
+                    x.append(j);
+                    x.append(k);
+                    f1[(x[0]%local_n0)*ny*nz + x[1]*nz + x[2]] = grid(x)[1] ;
+                }
+            }
         }
+                    
+        
+        
         fftw_execute(plan_r2c_1); 
         
-        
-        if(t%100==0) 
+        //cout<<"Finished executing dft"<<endl;
+        /*if(t%100==0) 
         { 
             #include "intstrains.hpp"   //Calculating the interaction strains for nucleation every 100 timesteps.
         } */
@@ -343,7 +325,7 @@ int main(int argc, char* argv[])
         
         
         
-            
+        cout<<"Reached flag "<<endl;
         
 		for(int n = 0 ; n < nodes(grid) ; n++)
 		{
@@ -367,12 +349,15 @@ int main(int argc, char* argv[])
 			G_Alpha[n] = ((grid(n)[20]*G_Al_alpha + grid(n)[21]*G_V_alpha + (1-grid(n)[20]-grid(n)[21])*G_Ti_alpha +
 					 R*T*(grid(n)[20]*log(grid(n)[20]) + grid(n)[21]*log(grid(n)[21]) + (1-grid(n)[20]-grid(n)[21])*log((1-grid(n)[20]-grid(n)[21]))) +
 					 grid(n)[20]*grid(n)[21]*L0_HCP_Al_V + grid(n)[20]*(1-grid(n)[20]-grid(n)[21])*(L0_HCP_Al_Ti + L1_HCP_Al_Ti*(2*grid(n)[20] + grid(n)[21] - 1)) + grid(n)[21]*(1-grid(n)[20]-grid(n)[21])*L0_HCP_Ti_V))/G_normalize ;
-					 
+				 
+            
 			G_Beta[n] = (grid(n)[20]*G_Al_beta + grid(n)[21]*G_V_beta + (1-grid(n)[20]-grid(n)[21])*G_Ti_beta +
 					 R*T*(grid(n)[20]*log(grid(n)[20]) + grid(n)[21]*log(grid(n)[21]) + (1-grid(n)[20]-grid(n)[21])*log((1-grid(n)[20]-grid(n)[21]))) +
 					 grid(n)[20]*grid(n)[21]*L0_BCC_Al_V + grid(n)[20]*(1-grid(n)[20]-grid(n)[21])*L0_BCC_Al_Ti + grid(n)[21]*(1-grid(n)[20]-grid(n)[21])*L0_BCC_Ti_V +
 					 grid(n)[20]*grid(n)[21]*(1-grid(n)[20]-grid(n)[21])*L0_BCC_Al_Ti_V)/G_normalize ;
-					 
+            
+            
+            
             W[n] = W_prefac*((0.10-grid(n)[20])*50*W_Al + (grid(n)[21]-0.036)*50*W_V) ;
 			MMSP::vector<store_type> gradient = grad(grid, x) ;
 			MMSP::vector<store_type> gradientsq = gradsq(grid, x) ;
@@ -402,6 +387,8 @@ int main(int argc, char* argv[])
 					gphi[hindex-1] = pow(grid(n)[hindex],2)*pow((1-grid(n)[hindex]),2) ;
 				}
 			}
+            
+            
             
             double cal = grid(n)[20] ;
             double cv = grid(n)[21] ;
@@ -433,6 +420,7 @@ int main(int argc, char* argv[])
                 }
             }
                
+            
             
             double c_al_rhs = 2*(del_dGAlpha_dAl - del_dGBeta_dAl)*hphiprimesum2 + delsq_dGAlpha_dAl*hphisum + delsq_dGBeta_dAl*(1-hphisum) + 
 					  (dGAlpha_dAl - dGBeta_dAl)*(hphidoubleprimesum + hphiprimesum1) + (W_Al - W_Ti)*(gphiprimesum + gphidoubleprimesum) ;
