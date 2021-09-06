@@ -34,8 +34,8 @@ sparse_serial: $(core)
 parallel: $(core)
 	$(pcompiler) $(flags) ./Parallel/main.cpp $< -o parallel.out -lz  #-include mpi.h
 	
-test: $(core)
-	$(pcompiler) $(flags) $(prefourierflags)  ./Parallel_fftw/main.cpp $(postfourierflags) $(fourier_mpi_linkers) $< -o test.out -lz  #-include mpi.h
+parallel_fftw_test: $(core)
+	$(pcompiler) $(flags) $(prefourierflags)  ./Parallel_fftw/main.cpp $(postfourierflags) $(fourier_mpi_linkers) $< -o parallel_fftw_test.out -lz  #-include mpi.h
 
 
 
